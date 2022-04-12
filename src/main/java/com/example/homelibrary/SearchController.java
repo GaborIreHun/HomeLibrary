@@ -137,6 +137,8 @@ public class SearchController {
             }
         }
         catch(Exception exception){}
+
+        // Credit to: Noble Code Monkeys@YouTube: https://www.youtube.com/watch?v=7lnVelyHxrc
     }
 
     /**
