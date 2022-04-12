@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.homelibrary.SearchController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+      <AnchorPane fx:id="searchPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+          <font>
+            <Font size="18.0" />
+          </font>
+        </Label>
+            <TableView fx:id="collection_info" editable="true" layoutX="4.0" layoutY="50.0" prefHeight="314.0" prefWidth="633.0">
+               <columns>
+                  <TableColumn id="clnTitle" fx:id="clmnTitle" prefWidth="105.0" text="Title" />
+                  <TableColumn id="clnAuthor" fx:id="clmnAuthor" prefWidth="105.0" text="Author" />
+                  <TableColumn id="clnPublisher" fx:id="clmnPublisher" prefWidth="105.0" text="Publisher" />
+                  <TableColumn id="clnDate" fx:id="clmnDate" prefWidth="105.0" text="Date" />
+                  <TableColumn id="clnPages" fx:id="clmnPages" prefWidth="105.0" text="Pages" />
+                  <TableColumn id="clnLanguage" fx:id="clmnLanguage" prefWidth="105.0" text="Language" />
+               </columns>
+            </TableView>
+            <TextField id="txtFind" fx:id="searchDynamic" layoutX="2.0" layoutY="14.0" prefHeight="25.0" prefWidth="248.0" promptText="What you attempt to find?" />
+            <Button id="btnFind" layoutX="334.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSaveAsAction" prefHeight="25.0" prefWidth="65.0" text="Save As" />
+            <Button id="btnReset" fx:id="btnReset" layoutX="256.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleResetAction" prefHeight="25.0" prefWidth="65.0" text="Reset" />
+            <Button id="btnPrint" fx:id="btnPrint" layoutX="412.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePrintAction" prefHeight="25.0" prefWidth="65.0" text="Print" />
+            <Button id="btnRemove" fx:id="btnRemove" layoutX="489.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleRemoveAction" prefHeight="25.0" prefWidth="65.0" text="Remove" />
+            <Button id="btnBack" layoutX="566.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackAction" prefHeight="25.0" prefWidth="65.0" text="Back" />
+      </children>
+      </AnchorPane>
+  </children>
+</VBox>
