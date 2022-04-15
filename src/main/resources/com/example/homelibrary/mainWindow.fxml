@@ -50,9 +50,7 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" text="Save" />
             <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
             <MenuItem mnemonicParsing="false" text="Quit" />
           </items>
         </Menu>
@@ -60,6 +58,7 @@
           <items>
             <MenuItem mnemonicParsing="false" text="About Home Library" />
                   <MenuItem mnemonicParsing="false" text="Guide Book" />
+                  <MenuItem mnemonicParsing="false" text="Technical Documentation" />
           </items>
         </Menu>
       </menus>
@@ -73,7 +72,7 @@
         </Label>
             <Button id="btnFind" fx:id="btnFind" layoutX="199.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleFindAction" text="Find" />
             <TextField id="txtISBN" fx:id="txtISBN" layoutX="218.0" layoutY="69.0" prefHeight="25.0" prefWidth="204.0" promptText="Please enter the ISBN number here" />
-            <TextField id="txtCounter" fx:id="txtCount" layoutX="573.0" layoutY="323.0" prefHeight="25.0" prefWidth="49.0" />
+            <TextField id="txtCounter" fx:id="txtCount" editable="false" layoutX="573.0" layoutY="323.0" prefHeight="25.0" prefWidth="49.0" />
             <Label layoutX="410.0" layoutY="322.0" prefHeight="27.0" prefWidth="150.0" text="Current number of records" />
             <Label layoutX="9.0" layoutY="138.0" prefHeight="17.0" prefWidth="104.0" text="Book information" textAlignment="CENTER" />
             <TableView fx:id="book_info" layoutX="4.0" layoutY="162.0" prefHeight="65.0" prefWidth="633.0">

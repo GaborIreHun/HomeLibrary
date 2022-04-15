@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="HomeLibrary" options="--add-exports java.xml/com.sun.org.apache.xml.internal.serialize=com.example.homelibrary" />
+      <module name="HomeLibrary" options="" />
     </option>
   </component>
 </project>

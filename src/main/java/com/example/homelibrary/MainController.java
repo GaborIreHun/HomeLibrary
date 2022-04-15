@@ -143,8 +143,14 @@ public class MainController {
     @FXML
     void handleFindAction(ActionEvent event) throws IOException, InterruptedException {
 
+        // Checking for missing input for ISBN
+        if (txtISBN.getText().length() == 0 || txtISBN.getText() == "") {
+            // Opening confirmation window with warning message
+            JOptionPane
+                    .showMessageDialog(null, "Enter th ISBN number!");
+        }
         // Checking if ISBN input contains non-numeric characters
-        if (!txtISBN.getText().matches("[0-9]+")) {
+        else if (!txtISBN.getText().matches("[0-9]+")) {
             // Opening confirmation window with warning message
             JOptionPane
                     .showMessageDialog(null, "ISBN is numeric, no other character allowed!");
@@ -155,12 +161,6 @@ public class MainController {
             // Opening confirmation window with warning message
             JOptionPane
                     .showMessageDialog(null, "ISBN consists either 10 or 13 characters!");
-        }
-        // Checking for missing input for ISBN
-        else if (txtISBN.getText().length() == 0 || txtISBN.getText() == "") {
-            // Opening confirmation window with warning message
-            JOptionPane
-                    .showMessageDialog(null, "Enter th ISBN number!");
         }
         else {
             // Boolean to determine book info received
@@ -299,7 +299,10 @@ public class MainController {
                 txtCount.redo();
             }
             // Catch for Input Output exception
-            catch (IOException e) { e.printStackTrace(); }
+            catch (IOException e) {
+                JOptionPane
+                        .showMessageDialog(null, "An error has occurred while adding the file!");
+                e.printStackTrace(); }
             // Using finally to close writer whether write is failing or not
             finally { writer.close(); }
         }

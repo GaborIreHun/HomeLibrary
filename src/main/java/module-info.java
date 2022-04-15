@@ -4,8 +4,9 @@ module com.example.homelibrary {
     requires java.net.http;
     requires com.google.gson;
     requires com.fasterxml.jackson.databind;
-    requires opencsv;
+    //requires opencsv;
     requires java.desktop;
+    requires com.opencsv;
 
 
     opens com.example.homelibrary to javafx.fxml;
