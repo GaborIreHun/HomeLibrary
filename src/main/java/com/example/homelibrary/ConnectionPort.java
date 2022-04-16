@@ -19,12 +19,6 @@ public class ConnectionPort{
      */
     String[] book = new String[6];
 
-    /**
-     *
-     */
-    Record record = new Record(book[0],book[1],book[2],book[3],book[4],book[5]);
-
-
 
     /**
      * Constructor to instantiate ConnectionPort object.
@@ -134,61 +128,12 @@ public class ConnectionPort{
 
     /**
      *
-     * @return
-     */
-    public String getTitle() { return record.getTitle(); }
-
-    /**
-     *
-     * @return
-     */
-    public String getAuthor() { return record.getAuthors(); }
-
-    /**
-     *
-     * @return
-     */
-    public String getPublisher() { return record.getPublisher(); }
-
-    /**
-     *
-     * @return
-     */
-    public String getPublishedDate() { return record.getPublishedDate(); }
-
-    /**
-     *
-     * @return
-     */
-    public String getPages() { return record.getPages(); }
-
-    /**
-     *
-     * @return
-     */
-    public String getLanguage() { return record.getLanguage(); }
-
-
-    /**
-     *
      */
     public class Container {
 
         public String kind;
         public int totalItems;
         public Item[] items;
-
-        public String getKind() { return kind; }
-
-        public void setKind(String kind) { this.kind = kind; }
-
-        public int getTotalItems () { return totalItems; }
-
-        public void setTotalItems (int totalItems) { this.totalItems = totalItems; }
-
-        public Item[] getItem () { return items; }
-
-        public void setItems (Item[] item) { this.items = items; }
     }
 
     /**
@@ -197,10 +142,6 @@ public class ConnectionPort{
     public class Item {
 
         public VolumeInfo volumeInfo;
-
-        public VolumeInfo getVolumeInfo() { return volumeInfo; }
-
-        public void setVolumeInfo(VolumeInfo volumeInfo) { this.volumeInfo = volumeInfo; }
     }
 
     /**
@@ -214,34 +155,5 @@ public class ConnectionPort{
         public String publishedDate;
         public int pageCount;
         public String language;
-
-        public String getTitle() { return title; }
-
-        public void setTitle(String title) { this.title = title; }
-
-        public String[] getAuthors() { return authors; }
-
-        public void setAuthors(String[] authors) { this.authors = authors; }
-
-        public String getPublisher() { return publisher; }
-
-        public void setPublisher(String publisher) { this.publisher = publisher; }
-
-        public String getPublishedDate() { return publishedDate; }
-
-        public void setPublishedDate(String publishedDate) { this.publishedDate = publishedDate; }
-
-        public int getPageCount() { return pageCount; }
-
-        public void setPageCount(int pageCount) { this.pageCount = pageCount; }
-
-        public String getLanguage() { return language; }
-
-        public void setLanguage(String language) { this.language = language; }
     }
-
 }
-
-
-
-

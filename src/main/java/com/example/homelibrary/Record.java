@@ -21,55 +21,28 @@ public class Record {
         this.language = new SimpleStringProperty(language);
     }
 
-    /**
-    @Override
-    public String toString() {
-        return System.out.println(this.getTitle(), );
-    }
-    */
-
 
     public String getTitle() { return title.get(); }
 
     public void setTitle(String title) { this.title.set(title); }
 
-    public String getAuthors() {
-        return authors.get();
-    }
+    public String getAuthors() { return authors.get(); }
 
-    public void setAuthors(String authors) {
-        this.authors.set(authors);
-    }
+    public void setAuthors(String authors) { this.authors.set(authors); }
 
-    public String getPublisher() {
-        return publisher.get();
-    }
+    public String getPublisher() { return publisher.get(); }
 
-    public void setPublisher(String publisher) {
-        this.publisher.set(publisher);
-    }
+    public void setPublisher(String publisher) { this.publisher.set(publisher); }
 
-    public String getPublishedDate() {
-        return publishedDate.get();
-    }
+    public String getPublishedDate() { return publishedDate.get(); }
 
-    public void setPublishedDate(String publishedDate) {
-        this.publishedDate.set(publishedDate);
-    }
+    public void setPublishedDate(String publishedDate) { this.publishedDate.set(publishedDate); }
 
-    public String getPages() {
-        return pages.get();
-    }
+    public String getPages() { return pages.get(); }
 
-    public void setPages(String pages) {
-        this.pages.set(pages);
-    }
+    public void setPages(String pages) { this.pages.set(pages); }
 
-    public String getLanguage() {
-        return language.get();
-    }
+    public String getLanguage() { return language.get(); }
 
-    public void setLanguage(String language) {
-        this.language.set(language);
-    }
+    public void setLanguage(String language) { this.language.set(language); }
 }
