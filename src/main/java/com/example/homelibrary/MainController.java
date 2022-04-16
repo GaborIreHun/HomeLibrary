@@ -297,6 +297,9 @@ public class MainController {
                 counter();
                 // Refreshing text field of the item counter
                 txtCount.redo();
+                // Message box to confirm the addition
+                JOptionPane
+                        .showMessageDialog(null, "The book has been added!");
                 // Clearing ISBN text field
                 txtISBN.clear();
                 // Clearing items from tableview
