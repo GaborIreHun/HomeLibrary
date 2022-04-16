@@ -175,7 +175,9 @@ public class SearchController {
             Record selectedItem = collection_info.getSelectionModel().getSelectedItem();
             // Removing selected row from tableView
             booksToLook.remove(selectedItem);
+            // Clearing datastructures for new set of records
             books.clear();
+            // Reading remained records and storing them in datastructures
             for (Record book : booksToLook){
                 books.add(new String[]{book.getTitle(),
                         book.getAuthors(),
@@ -185,7 +187,11 @@ public class SearchController {
                         book.getLanguage()});
             }
             try { updateCSV(); }
-            catch (IOException ex) { ex.printStackTrace(); }
+            catch (IOException ex) {
+                // Message box to advise of the error
+                JOptionPane
+                        .showMessageDialog(null, "There was an error while updating the collection!");
+                ex.printStackTrace(); }
         });
     }
 
