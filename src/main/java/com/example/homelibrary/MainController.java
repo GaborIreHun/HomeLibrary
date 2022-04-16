@@ -297,6 +297,10 @@ public class MainController {
                 counter();
                 // Refreshing text field of the item counter
                 txtCount.redo();
+                // Clearing ISBN text field
+                txtISBN.clear();
+                // Clearing items from tableview
+                book_info.getItems().clear();
             }
             // Catch for Input Output exception
             catch (IOException e) {
@@ -306,7 +310,6 @@ public class MainController {
             // Using finally to close writer whether write is failing or not
             finally { writer.close(); }
         }
-
     }
 
 
