@@ -70,7 +70,7 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <TableView fx:id="collection_info" editable="true" layoutX="4.0" layoutY="50.0" prefHeight="314.0" prefWidth="633.0">
+            <TableView fx:id="collection_info" layoutX="4.0" layoutY="50.0" prefHeight="314.0" prefWidth="633.0">
                <columns>
                   <TableColumn id="clnTitle" fx:id="clmnTitle" prefWidth="105.0" text="Title" />
                   <TableColumn id="clnAuthor" fx:id="clmnAuthor" prefWidth="105.0" text="Author" />

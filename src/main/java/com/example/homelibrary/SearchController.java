@@ -27,94 +27,99 @@ import javafx.stage.Window;
 import javax.swing.*;
 
 /**
- *
+ * This class represents the search page
  */
 public class SearchController {
 
     /**
-     *
+     * The tableview for collection information
      */
     @FXML
     public TableView<Record> collection_info;
 
     /**
-     *
+     * The author's table column
      */
     @FXML
     private TableColumn<Record, String> clmnAuthor;
 
     /**
-     *
+     * The published date's table column
      */
     @FXML
     private TableColumn<Record, String> clmnDate;
 
     /**
-     *
+     * The language's table column
      */
     @FXML
     private TableColumn<Record, String> clmnLanguage;
 
     /**
-     *
+     * The page number's table column
      */
     @FXML
     private TableColumn<Record, String> clmnPages;
 
     /**
-     *
+     * The publisher's table column
      */
     @FXML
     private TableColumn<Record, String> clmnPublisher;
 
     /**
-     *
+     * The title's table column
      */
     @FXML
     private TableColumn<Record, String> clmnTitle;
 
     /**
-     *
+     * The area of the search page/pane
      */
     @FXML
     private AnchorPane searchPane;
 
     /**
-     *
+     * Text field for search word input
      */
     @FXML
     private TextField searchDynamic;
 
     /**
-     *
+     * The remove button
      */
     @FXML
     private Button btnRemove;
 
 
     /**
-     *
-     * @param event
-     * @throws IOException
+     * Action handler for back button click event
+     * @param event: Click action event
+     * @throws IOException: Exception for IO operation fail
      */
     @FXML
     void handleBackAction(ActionEvent event) throws IOException {
-
+        // Initializing FXMLLoader with the appropriate fxml file
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainWindow.fxml"));
+        // Creating a new window
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        // Loading setup to a new Scene object
         Scene scene = new Scene(loader.load());
+        // Setting scene with set properties
         stage.setScene(scene);
     }
 
     /**
-     *
-     * @param event
+     * Action handler for save as button click event
+     * @param event: Button click event
      */
     @FXML
     void handleSaveAsAction(ActionEvent event) {
 
+        // Creating FileChooser object
         FileChooser fileChooser = new FileChooser();
 
+        // Setting current window as a target to display the file chooser
         Window stage = searchPane.getScene().getWindow();
 
         // Creating fileChooser title
@@ -136,7 +141,11 @@ public class SearchController {
                 SaveFile(file);
             }
         }
-        catch(Exception exception){}
+        catch(Exception exception){
+            // Opening confirmation window with warning message
+            JOptionPane
+                    .showMessageDialog(null, "Problem occurred while saving the file!");
+        }
 
         // Credit to: Noble Code Monkeys@YouTube: https://www.youtube.com/watch?v=7lnVelyHxrc
     }
@@ -158,13 +167,18 @@ public class SearchController {
             // Printing file with the native desktop printing facility,
             // using the associated application's print command.
             desktop.print(file);
-        } catch (IOException e) { e.printStackTrace(); }
+        } catch (IOException e) {
+            // Opening confirmation window with warning message
+            JOptionPane
+                    .showMessageDialog(null, "There was an error while printing!");
+            e.printStackTrace();
+        }
     }
 
 
     /**
-     *
-     * @param event
+     * Action handler for remove button click event
+     * @param event: Button click event
      */
     @FXML
     void handleRemoveAction(ActionEvent event) throws IOException {
@@ -197,34 +211,36 @@ public class SearchController {
 
 
     /**
-     *
-     * @param event
+     * Action handler for reset button click event
+     * @param event: Button click event
      */
     @FXML
     void handleResetAction(ActionEvent event) { searchDynamic.clear(); }
 
 
     /**
-     *
+     * ObservableList to store information for the search function
      */
     public ObservableList<Record> booksToLook
             = FXCollections.observableArrayList();
 
     /**
-     *
+     * Datastructures to hold information of books
      */
     List<String[]> books = new ArrayList<>();
 
     /**
-     *
+     * Initializer for page start up
      */
     public void initialize() {
-
+        // Calling method to load CSV data to TableView
         loadCSV();
 
         // Initial filtered list
         FilteredList<Record> filteredBooks = new FilteredList<>(booksToLook, b -> true);
 
+        // Adding listener to searchDynamic text field changes and adding appropriate
+        // actions to aid the dynamic search of the TableView items
         searchDynamic.textProperty().addListener((observable, oldValue, newValue) ->
                 filteredBooks.setPredicate(bookMatches -> {
 
@@ -232,9 +248,10 @@ public class SearchController {
                     if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
                         return true;
                     }
-
+                    // Lowering characters of the search words to enhance search
                     String searchKeyword = newValue.toLowerCase();
 
+                    // Checking if the search phrase matches the information in any of the columns
                     if ( bookMatches.getTitle().toLowerCase().indexOf(searchKeyword) > -1 ) {
                         // Match is found
                         return true; }
@@ -257,7 +274,7 @@ public class SearchController {
                         return false; })
         );
 
-        //
+        // Creating datastructures for the matching records for the search phrase
         SortedList<Record> sortedBooks = new SortedList<>(filteredBooks);
 
         // Binding sorted results with the table view
@@ -271,23 +288,35 @@ public class SearchController {
 
 
     /**
-     *
-     * @param file
+     * Method to save collection
+     * @param file: target file
      */
     private void SaveFile(File file){
-
+        // Initializing variables and datastructures for try and for blocks
         List<String[]> lineInArray = new ArrayList<>();
         String[] book;
         String content = null;
         String bookCollection = null;
 
+        // Reading values from CSV to datastructures
         try (CSVReader reader = new CSVReader(new FileReader("books.csv"))) {
             while ((book = reader.readNext()) != null) {
                 lineInArray.add(book);
             }
-        } catch (FileNotFoundException e) { e.printStackTrace(); }
-        catch (IOException | CsvValidationException e) { e.printStackTrace(); }
+        } catch (FileNotFoundException e) {
+            // Message box to advise of the error
+            JOptionPane
+                    .showMessageDialog(null, "File to read not found!");
+            e.printStackTrace();
+        }
+        catch (IOException | CsvValidationException e) {
+            // Message box to advise of the error
+            JOptionPane
+                    .showMessageDialog(null, "There was an error while reading the collection!");
+            e.printStackTrace();
+        }
 
+        // Writing the data from datastructures to a String variable
         for (String[] singleBook: lineInArray){
             for (int i=0; i < singleBook.length; i++){
                 content += singleBook[i] + ",";
@@ -296,25 +325,29 @@ public class SearchController {
             content = "";
         }
 
+        // Declaring FileWriter object for the try block
         FileWriter fileWriter;
 
+        // Writing CSV from String variable
         try {
             fileWriter = new FileWriter(file);
             fileWriter.write(bookCollection);
             fileWriter.close();
         } catch (IOException ex) {
-            //TODO
+            // Message box to advise of the error
+            JOptionPane
+                    .showMessageDialog(null, "There was an error while writing the collection!");
         }
     }
 
 
     /**
-     *
-     * @throws IOException
+     * Method to update default collection if item was removed by user
+     * @throws IOException: Exception for IO operation fail
      */
     public void updateCSV() throws IOException {
 
-
+        // Initializing CSVWriter object to null for the try block
         CSVWriter writer = null;
 
 
@@ -326,8 +359,9 @@ public class SearchController {
                     CSVWriter.DEFAULT_ESCAPE_CHARACTER,
                     CSVWriter.RFC4180_LINE_END);
 
+            // Looping through datastructures that holds book information
             for (String[] book : books) {
-
+                // Preventing additionally generated quotation marks
                 if (book[0] != "" && book[0].charAt(0) == '"') {
                     // Appending books.csv with book record info to next new line
                     writer.writeNext(
@@ -340,45 +374,64 @@ public class SearchController {
                                     book[5].substring(1, book[5].length() - 1)
                             });
                 }
-                else if (book[0] == null) { System.out.println("issue");}
+                // Preventing null values to be witten to file
+                else if (book[0] == null) {
+                    // Message box to advise of the error
+                    JOptionPane
+                            .showMessageDialog(null, "There was an error while updating the collection!");
+                    }
+                // Writing information into CSV
                 else {
                     writer.writeNext(
                             new String[] { book[0], book[1], book[2], book[3], book[4], book[5]});
                 }
             }
-        } catch (IOException e) { e.printStackTrace(); }
+        } catch (IOException e) {
+            // Message box to advise of the error
+            JOptionPane
+                    .showMessageDialog(null, "There was an error while updating the collection!");
+            e.printStackTrace(); }
         // Using finally to close writer whether write is failing or not
         finally { writer.close(); }
     }
 
 
     /**
-     *
-     * @return
+     * Method to loop through the default CSV and display the found information in the TableView
      */
     public void loadCSV() {
-
+        // ObservableList object to store temporary information
         final ObservableList<Record> books
                 = FXCollections.observableArrayList();
 
+        // Variable for default CSV location
         String CsvFile = "books.csv";
+        // Variable for delimiter
         String FieldDelimiter = ",";
 
+        // Declaring BufferReader object
         BufferedReader br;
 
+        // Initializing record object to null
         Record record = null;
+        // Initializing boolean that refers to available info
         Boolean bookIsEmpty = true;
 
         try {
-
+            // Initializing BufferReader with the default CSV
             br = new BufferedReader(new FileReader(CsvFile));
 
+            // Declaring variable that represents a line in the CSV
             String line;
 
+            // Checking if there is any data in the CSV
+            // If not, warning user with messagebox
             if ((br.readLine()) == null) {
                 JOptionPane
                     .showMessageDialog(null, "There are no books in your collection!!");
             }
+            // If data present loop through the CSV, create record objects from the information
+            // and add those to the temporary ObservableList
             else {
                 bookIsEmpty = false;
                 while ((line = br.readLine()) != null) {
@@ -388,7 +441,6 @@ public class SearchController {
                   books.add(record);
                 }
             }
-
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "File Not Found!!");
             ex.printStackTrace();
@@ -397,31 +449,19 @@ public class SearchController {
             ex.printStackTrace();
         }
 
+        // If there is any data in the CSV utilize the temporary ObservableList to display data appropriately
         if (bookIsEmpty == false) {
-        clmnTitle.setCellValueFactory(new PropertyValueFactory<Record, String>("title"));
-        clmnAuthor.setCellValueFactory(new PropertyValueFactory<Record, String>("authors"));
-        clmnPublisher.setCellValueFactory(new PropertyValueFactory<Record, String>("publisher"));
-        clmnDate.setCellValueFactory(new PropertyValueFactory<Record, String>("publishedDate"));
-        clmnPages.setCellValueFactory(new PropertyValueFactory<Record, String>("pages"));
-        clmnLanguage.setCellValueFactory(new PropertyValueFactory<Record, String>("language"));
-
-        collection_info.setItems(books);
-
-        booksToLook = books;
+            // Assign the appropriate info to the relevant column
+            clmnTitle.setCellValueFactory(new PropertyValueFactory<Record, String>("title"));
+            clmnAuthor.setCellValueFactory(new PropertyValueFactory<Record, String>("authors"));
+            clmnPublisher.setCellValueFactory(new PropertyValueFactory<Record, String>("publisher"));
+            clmnDate.setCellValueFactory(new PropertyValueFactory<Record, String>("publishedDate"));
+            clmnPages.setCellValueFactory(new PropertyValueFactory<Record, String>("pages"));
+            clmnLanguage.setCellValueFactory(new PropertyValueFactory<Record, String>("language"));
+            // Loading tableview with created ObservableList<Record>
+            collection_info.setItems(books);
+            // Assign the value of the temporary ObservableList to the primary one
+            booksToLook = books;
         }
     }
-
-    //Method to tests whether a Record matches the search text
-
-
-
-
-    /**
-     * Method to loop through a list of Records and performs this test on each Record
-     * : List of Records that match for criteria
-     * : The text field that contains the filter
-     * @return: Returns observableList with Records that match for the search
-     */
-
-
 }

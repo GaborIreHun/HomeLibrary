@@ -9,13 +9,14 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
- *
+ * This class represents the communication with the API
  */
 public class ConnectionPort{
 
     /**
-     *
+     * Datastructures to hold necessary information about a book
      */
     String[] book = new String[6];
 
@@ -28,9 +29,8 @@ public class ConnectionPort{
      * @param request String value with address.
      */
     public ConnectionPort(String request) throws IOException, InterruptedException {
-        /**
-         * Request for HTTP connection.
-         */
+
+        // Request for HTTP connection
         makeRequest(request);
     }
 
@@ -55,9 +55,8 @@ public class ConnectionPort{
 
         // Code reference - yahoo finance api tutorial. Line 55 - 61, creating user request
         // with appropriate URI, API key and type of request.
-        /**
-         * API key of the user.
-         */
+
+        // API key of the user.
         String key = "AIzaSyAyzBOao9W5uizzQkV2ifZ96HyhOvPA1pE";
         HttpRequest userRequest = HttpRequest.newBuilder()
                 .uri(URI.create("https://www.googleapis.com/books/v1/volumes?q=isbn:" + requestString))
@@ -68,19 +67,18 @@ public class ConnectionPort{
         HttpResponse<String> response = HttpClient.newHttpClient()
                 .send(userRequest, HttpResponse.BodyHandlers.ofString());
 
-        // call mapping method with received data.
+        // Call mapping method with received data.
         listInfo(response.body());
-        //System.out.println(response.body());
     }
 
 
     /**
-     *
-     * @param responseBody
+     * Mapping method to parse the received data
+     * @param responseBody: received information in JSON format
      */
     private void listInfo(String responseBody) {
 
-
+        // Initializing variables and datastructures that holds book information for the For Loop
         String title = null;
         List<String> authors = new ArrayList<>();
         String publisher = null;
@@ -88,9 +86,10 @@ public class ConnectionPort{
         int pages = 0;
         String language = null;
 
-
+        // Creating new Gson object utilizing the POJO classes to parse the information needed
         Container fullJsonObject = new Gson().fromJson(responseBody, Container.class);
 
+        // Looping through the Gson object to retrieve the required information
         for (Item i : fullJsonObject.items) {
             title = i.volumeInfo.title;
             authors.add(i.volumeInfo.authors[0]);
@@ -99,6 +98,7 @@ public class ConnectionPort{
             pages = i.volumeInfo.pageCount;
             language = i.volumeInfo.language;
 
+            // Prints to the console for debugging purposes
             System.out.println(i.volumeInfo.authors[0]);
             System.out.println(i.volumeInfo.title);
             System.out.println(i.volumeInfo.publisher);
@@ -107,9 +107,11 @@ public class ConnectionPort{
             System.out.println(i.volumeInfo.language);
         }
 
-        
+        // Converting arraylist information to an array
         String[] array = authors.toArray(new String[0]);
 
+        // Assigning parsed info to the appropriate item in the datastructures
+        // that has been created to hold the relevant information of 1 book.
         book[0] = title;
         book[1] = array[0];
         book[2] = publisher;
@@ -118,6 +120,7 @@ public class ConnectionPort{
         else { book[4] = Integer.toString(pages); }
         book[5] = language;
 
+        // For Loop to highlight missing information to user and to prevent null pointer exception
         for (int i = 0; i < book.length; i++) {
             if (book[i] == null) {
                 book[i] = "No Information";
@@ -125,9 +128,10 @@ public class ConnectionPort{
         }
     }
 
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Pojo Classes <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     /**
-     *
+     * POJO class represents a collection of Item classes
      */
     public class Container {
 
@@ -137,7 +141,7 @@ public class ConnectionPort{
     }
 
     /**
-     *
+     * POJO class that represents a collection of key value pairs (Information of a book)
      */
     public class Item {
 
@@ -145,7 +149,7 @@ public class ConnectionPort{
     }
 
     /**
-     *
+     * POJO class that represents the required key value pairs from the nested object
      */
     public class VolumeInfo {
 

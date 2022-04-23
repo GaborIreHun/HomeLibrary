@@ -116,7 +116,7 @@ public class MainController {
     // open collection -> desktop.browse(URI.create("books.csv"));
 
     /**
-     * Initializer fo page start up
+     * Initializer for page start up
      */
     public void initialize() { counter(); }
 
@@ -129,8 +129,6 @@ public class MainController {
     void handleAddAction(ActionEvent event) throws IOException {
         // Calling function to add book to collection
         addBook();
-        // Refreshing item counter field
-        txtCount.redo();
     }
 
 
@@ -231,7 +229,13 @@ public class MainController {
             // Prints a file with the native desktop printing facility,
             // using the associated application's print command.
             desktop.print(file);
-        } catch (IOException e) { e.printStackTrace(); }
+        } catch (IOException e) {
+            // Opening confirmation window with warning message
+            JOptionPane
+                    .showMessageDialog(null, "Problem occurred with the printing!");
+            // Printing stack trace to console for debugging purposes
+            e.printStackTrace();
+        }
     }
 
 
@@ -293,10 +297,6 @@ public class MainController {
                 // Appending books.csv with book record info to next new line
                 writer.writeNext(book);
 
-                // Calling counter() method to
-                counter();
-                // Refreshing text field of the item counter
-                txtCount.redo();
                 // Message box to confirm the addition
                 JOptionPane
                         .showMessageDialog(null, "The book has been added!");
@@ -313,6 +313,8 @@ public class MainController {
             // Using finally to close writer whether write is failing or not
             finally { writer.close(); }
         }
+        // Calling counter() method to rectify item counter
+        counter();
     }
 
 
@@ -341,8 +343,18 @@ public class MainController {
             // Refreshing text field of the item counter
             txtCount.redo();
         }
-        catch (FileNotFoundException ex) { ex.printStackTrace(); }
-        catch (IOException ex) { ex.printStackTrace(); }
+        catch (FileNotFoundException ex) {
+            // Opening confirmation window with warning message
+            JOptionPane
+                    .showMessageDialog(null, "Problem occurred while handling the file!");
+            ex.printStackTrace();
+        }
+        catch (IOException ex) {
+            // Opening confirmation window with warning message
+            JOptionPane
+                    .showMessageDialog(null, "I/O problem occurred!");
+            ex.printStackTrace();
+        }
 
         // Assigning counted item value to instance variable
         numberOfBooks = counter;
