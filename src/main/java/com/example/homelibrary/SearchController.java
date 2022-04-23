@@ -26,6 +26,8 @@ import java.util.List;
 import javafx.stage.Window;
 import javax.swing.*;
 
+import static javafx.application.Platform.exit;
+
 /**
  * This class represents the search page
  */
@@ -219,6 +221,41 @@ public class SearchController {
 
 
     /**
+     * Action handler for menu exit button click event
+     * @param event: Button click event
+     */
+    @FXML
+    void handleExit(ActionEvent event) {
+        exit();
+    }
+
+
+    /**
+     * Action handler for menu about button click event
+     * @param event: Button click event
+     */
+    @FXML
+    void handleAbout(ActionEvent event) {
+        // Opening message window with app info
+        JOptionPane
+                .showMessageDialog(null, "Home Library v1.0\n" +
+                        "Create your home library record easy\n" +
+                        "Author: Gabor Sebestyen\n" +
+                        "2022");
+    }
+
+
+    /**
+     * Action handler for menu technical documentation button click event
+     * @param event: Button click event
+     */
+    @FXML
+    void handleTechnical(ActionEvent event) throws IOException {
+        File file = new java.io.File("src/javadocs/index.html").getAbsoluteFile();
+        Desktop.getDesktop().open(file);
+    }
+
+    /**
      * ObservableList to store information for the search function
      */
     public ObservableList<Record> booksToLook
@@ -291,7 +328,7 @@ public class SearchController {
      * Method to save collection
      * @param file: target file
      */
-    private void SaveFile(File file){
+    static void SaveFile(File file){
         // Initializing variables and datastructures for try and for blocks
         List<String[]> lineInArray = new ArrayList<>();
         String[] book;
@@ -463,5 +500,8 @@ public class SearchController {
             // Assign the value of the temporary ObservableList to the primary one
             booksToLook = books;
         }
+    }
+
+    public void handleGuide(ActionEvent actionEvent) {
     }
 }

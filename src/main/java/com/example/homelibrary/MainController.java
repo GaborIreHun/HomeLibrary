@@ -10,13 +10,19 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+
 import java.awt.*;
 import java.io.*;
 import javax.swing.*;
+
+import static javafx.application.Platform.exit;
 
 
 /**
@@ -53,6 +59,12 @@ public class MainController {
      */
     @FXML
     private Button btnReset;
+
+    /**
+     * The save as menu button
+     */
+    @FXML
+    private MenuItem btnMenuSaveAs;
 
     /**
      * The tableview for found book information
@@ -113,12 +125,88 @@ public class MainController {
      */
     int numberOfBooks = 0;
 
-    // open collection -> desktop.browse(URI.create("books.csv"));
 
     /**
      * Initializer for page start up
      */
     public void initialize() { counter(); }
+
+
+    /**
+     * Action handler for menu about button click event
+     * @param event: Button click event
+     */
+    @FXML
+    void handleAbout(ActionEvent event) {
+        // Opening message window with app info
+        JOptionPane
+                .showMessageDialog(null, "Home Library v1.0\n" +
+                        "Create your home library record easy\n" +
+                        "Author: Gabor Sebestyen\n" +
+                        "2022");
+    }
+
+
+    /**
+     * Action handler for menu technical documentation button click event
+     * @param event: Button click event
+     */
+    @FXML
+    void handleTechnical(ActionEvent event) throws IOException {
+        File file = new java.io.File("src/javadocs/index.html").getAbsoluteFile();
+        Desktop.getDesktop().open(file);
+    }
+
+
+    /**
+     * Action handler for menu exit button click event
+     * @param event: Button click event
+     */
+    @FXML
+    void handleExit(ActionEvent event) {
+        exit();
+    }
+
+
+    /**
+     * Action handler for save as button click event
+     * @param event: Button click event
+     */
+    @FXML
+    void handleSaveAs(ActionEvent event) {
+        // Creating FileChooser object
+        FileChooser fileChooser = new FileChooser();
+
+        // Setting current window as a target to display the file chooser
+        Window stage = mainPane.getScene().getWindow();
+
+        // Creating fileChooser title
+        fileChooser.setTitle("Save file As");
+        // Setting proposed file name
+        fileChooser.setInitialFileName("New books");
+        // Setting available file extensions
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                new FileChooser.ExtensionFilter("CSV","*.csv"));
+
+        try{
+            // Open the fileChooser
+            File file = fileChooser.showSaveDialog(stage);
+            // Save to the chosen directory
+            fileChooser.setInitialDirectory(file.getParentFile());
+
+            if (file != null){
+                SearchController.SaveFile(file);
+            }
+        }
+        catch(Exception exception){
+            // Opening confirmation window with warning message
+            JOptionPane
+                    .showMessageDialog(null, "Problem occurred while saving the file!");
+        }
+
+        // Credit to: Noble Code Monkeys@YouTube: https://www.youtube.com/watch?v=7lnVelyHxrc
+    }
 
 
     /**
@@ -362,5 +450,8 @@ public class MainController {
         txtCount.setText(Integer.toString(numberOfBooks));
         // Refreshing text field of the item counter
         txtCount.redo();
+    }
+
+    public void handleGuide(ActionEvent actionEvent) {
     }
 }

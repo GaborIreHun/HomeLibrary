@@ -50,15 +50,15 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
+            <MenuItem mnemonicParsing="false" onAction="#handleSaveAsAction" text="Save As…" />
+            <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
-            <MenuItem mnemonicParsing="false" text="About Home Library" />
-                  <MenuItem mnemonicParsing="false" text="Guide Book" />
-                  <MenuItem mnemonicParsing="false" text="Technical Documentation" />
+            <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About Home Library" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleGuide" text="Guide Book" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleTechnical" text="Technical Documentation" />
           </items>
         </Menu>
       </menus>
