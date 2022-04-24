@@ -148,8 +148,21 @@ public class MainController {
 
 
     /**
+     * Action handler for menu guide book button click event
+     * @param actionEvent: Button click event
+     * @throws IOException: Exception for IO operation fail
+     */
+    @FXML
+    public void handleGuide(ActionEvent actionEvent) throws IOException {
+        File file = new java.io.File("src/userguide/guide.htm").getAbsoluteFile();
+        Desktop.getDesktop().open(file);
+    }
+
+
+    /**
      * Action handler for menu technical documentation button click event
      * @param event: Button click event
+     * @throws IOException: Exception for IO operation fail
      */
     @FXML
     void handleTechnical(ActionEvent event) throws IOException {
@@ -452,6 +465,5 @@ public class MainController {
         txtCount.redo();
     }
 
-    public void handleGuide(ActionEvent actionEvent) {
-    }
+
 }

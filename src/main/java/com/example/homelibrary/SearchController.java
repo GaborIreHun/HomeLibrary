@@ -246,6 +246,18 @@ public class SearchController {
 
 
     /**
+     * Action handler for menu guide book button click event
+     * @param actionEvent: Button click event
+     * @throws IOException: Exception for IO operation fail
+     */
+    @FXML
+    public void handleGuide(ActionEvent actionEvent) throws IOException {
+        File file = new java.io.File("src/userguide/guide.htm").getAbsoluteFile();
+        Desktop.getDesktop().open(file);
+    }
+
+
+    /**
      * Action handler for menu technical documentation button click event
      * @param event: Button click event
      */
@@ -500,8 +512,5 @@ public class SearchController {
             // Assign the value of the temporary ObservableList to the primary one
             booksToLook = books;
         }
-    }
-
-    public void handleGuide(ActionEvent actionEvent) {
     }
 }
