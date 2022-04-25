@@ -18,7 +18,7 @@ public class ConnectionPort{
     /**
      * Datastructures to hold necessary information about a book
      */
-    String[] book = new String[6];
+    static String[] book = new String[6];
 
 
     /**
@@ -51,7 +51,7 @@ public class ConnectionPort{
      * @throws InterruptedException thrown when a thread is interrupted while it's waiting, sleeping,
      *                              or otherwise occupied.
      */
-    private void makeRequest(String requestString) throws IOException, InterruptedException {
+    static void makeRequest(String requestString) throws IOException, InterruptedException {
 
         // Code reference - yahoo finance api tutorial. Line 55 - 61, creating user request
         // with appropriate URI, API key and type of request.
@@ -76,7 +76,7 @@ public class ConnectionPort{
      * Mapping method to parse the received data
      * @param responseBody: received information in JSON format
      */
-    private void listInfo(String responseBody) {
+    private static void listInfo(String responseBody) {
 
         // Initializing variables and datastructures that holds book information for the For Loop
         String title = null;

@@ -181,6 +181,7 @@ public class SearchController {
     /**
      * Action handler for remove button click event
      * @param event: Button click event
+     * @throws IOException: Exception for IO operation fail
      */
     @FXML
     void handleRemoveAction(ActionEvent event) throws IOException {
@@ -209,6 +210,8 @@ public class SearchController {
                         .showMessageDialog(null, "There was an error while updating the collection!");
                 ex.printStackTrace(); }
         });
+        // Calling method to reload CSV data to TableView
+        loadCSV();
     }
 
 
@@ -260,6 +263,7 @@ public class SearchController {
     /**
      * Action handler for menu technical documentation button click event
      * @param event: Button click event
+     * @throws IOException: Exception for IO operation fail
      */
     @FXML
     void handleTechnical(ActionEvent event) throws IOException {
