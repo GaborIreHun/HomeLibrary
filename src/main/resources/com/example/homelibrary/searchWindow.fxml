@@ -80,12 +80,12 @@
                   <TableColumn id="clnLanguage" fx:id="clmnLanguage" prefWidth="105.0" text="Language" />
                </columns>
             </TableView>
-            <TextField id="txtFind" fx:id="searchDynamic" layoutX="2.0" layoutY="14.0" prefHeight="25.0" prefWidth="248.0" promptText="What you attempt to find?" />
-            <Button id="btnFind" layoutX="334.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSaveAsAction" prefHeight="25.0" prefWidth="65.0" text="Save As" />
-            <Button id="btnReset" fx:id="btnReset" layoutX="256.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleResetAction" prefHeight="25.0" prefWidth="65.0" text="Reset" />
-            <Button id="btnPrint" fx:id="btnPrint" layoutX="412.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePrintAction" prefHeight="25.0" prefWidth="65.0" text="Print" />
-            <Button id="btnRemove" fx:id="btnRemove" layoutX="489.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleRemoveAction" prefHeight="25.0" prefWidth="65.0" text="Remove" />
-            <Button id="btnBack" layoutX="566.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackAction" prefHeight="25.0" prefWidth="65.0" text="Back" />
+            <TextField id="txtFind" fx:id="searchDynamic" accessibleHelp="Enter sought phrase." accessibleText="Enter sought phrase." layoutX="2.0" layoutY="14.0" prefHeight="25.0" prefWidth="248.0" promptText="What you attempt to find?" />
+            <Button id="btnFind" accessibleHelp="Save collection as." accessibleText="Save collection as." layoutX="334.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSaveAsAction" prefHeight="25.0" prefWidth="65.0" text="Save As" />
+            <Button id="btnReset" fx:id="btnReset" accessibleHelp="Clear search phrase." accessibleText="Clear search phrase." layoutX="256.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleResetAction" prefHeight="25.0" prefWidth="65.0" text="Reset" />
+            <Button id="btnPrint" fx:id="btnPrint" accessibleHelp="Quick print collection." accessibleText="Quick print collection." layoutX="412.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePrintAction" prefHeight="25.0" prefWidth="65.0" text="Print" />
+            <Button id="btnRemove" fx:id="btnRemove" accessibleHelp="Remove selected book." accessibleText="Remove selected book." layoutX="489.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleRemoveAction" prefHeight="25.0" prefWidth="65.0" text="Remove" />
+            <Button id="btnBack" accessibleHelp="Back to main page." accessibleText="Back to main page." layoutX="566.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackAction" prefHeight="25.0" prefWidth="65.0" text="Back" />
       </children>
       </AnchorPane>
   </children>

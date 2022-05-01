@@ -70,9 +70,9 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <Button id="btnFind" fx:id="btnFind" layoutX="199.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleFindAction" text="Find" />
-            <TextField id="txtISBN" fx:id="txtISBN" layoutX="218.0" layoutY="69.0" prefHeight="25.0" prefWidth="204.0" promptText="Please enter the ISBN number here" />
-            <TextField id="txtCounter" fx:id="txtCount" editable="false" layoutX="573.0" layoutY="323.0" prefHeight="25.0" prefWidth="49.0" />
+            <Button id="btnFind" fx:id="btnFind" accessibleHelp="Find book details." accessibleText="Find book details." layoutX="199.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleFindAction" text="Find" />
+            <TextField id="txtISBN" fx:id="txtISBN" accessibleHelp="Enter ISBN number." accessibleText="Enter ISBN number." layoutX="218.0" layoutY="69.0" prefHeight="25.0" prefWidth="204.0" promptText="Please enter the ISBN number here" />
+            <TextField id="txtCounter" fx:id="txtCount" accessibleHelp="Number of books in collection." accessibleText="Number of books in collection." editable="false" layoutX="573.0" layoutY="323.0" prefHeight="25.0" prefWidth="49.0" />
             <Label layoutX="410.0" layoutY="322.0" prefHeight="27.0" prefWidth="150.0" text="Current number of records" />
             <Label layoutX="9.0" layoutY="138.0" prefHeight="17.0" prefWidth="104.0" text="Book information" textAlignment="CENTER" />
             <TableView fx:id="book_info" layoutX="4.0" layoutY="162.0" prefHeight="65.0" prefWidth="633.0">
@@ -85,10 +85,10 @@
                   <TableColumn id="clnLanguage" fx:id="clmnLanguage" prefWidth="105.0" text="Language" />
               </columns>
             </TableView>
-            <Button id="btnAdd" fx:id="btnAdd" layoutX="247.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleAddAction" text="Add Record" />
-            <Button id="btnReset" fx:id="btnReset" layoutX="453.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleResetMainAction" text="Reset" />
-            <Button id="btnPrint" layoutX="521.0" layoutY="239.0" mnemonicParsing="false" onAction="#handlePrintMainAction" text="Print Collection" />
-            <Button id="btnSearch" layoutX="333.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleSearchCollectionAction" text="Search Collection" />
+            <Button id="btnAdd" fx:id="btnAdd" accessibleHelp="Add record to collection." accessibleText="Add record to collection." layoutX="247.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleAddAction" text="Add Record" />
+            <Button id="btnReset" fx:id="btnReset" accessibleHelp="Reset ISBN input." accessibleText="Reset ISBN input." layoutX="453.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleResetMainAction" text="Reset" />
+            <Button id="btnPrint" accessibleHelp="Quick print collection." accessibleText="Quick print collection." layoutX="521.0" layoutY="239.0" mnemonicParsing="false" onAction="#handlePrintMainAction" text="Print Collection" />
+            <Button id="btnSearch" accessibleHelp="Search book in collection." accessibleText="Search book in collection." layoutX="333.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleSearchCollectionAction" text="Search Collection" />
       </children>
     </AnchorPane>
   </children>
