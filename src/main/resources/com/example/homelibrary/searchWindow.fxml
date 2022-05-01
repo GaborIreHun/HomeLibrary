@@ -40,6 +40,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -62,6 +63,9 @@
           </items>
         </Menu>
       </menus>
+         <tooltip>
+            <Tooltip text="Menu bar." />
+         </tooltip>
     </MenuBar>
       <AnchorPane fx:id="searchPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
@@ -79,13 +83,34 @@
                   <TableColumn id="clnPages" fx:id="clmnPages" prefWidth="105.0" text="Pages" />
                   <TableColumn id="clnLanguage" fx:id="clmnLanguage" prefWidth="105.0" text="Language" />
                </columns>
+               <tooltip>
+                  <Tooltip text="Books in you collection." />
+               </tooltip>
             </TableView>
-            <TextField id="txtFind" fx:id="searchDynamic" accessibleHelp="Enter sought phrase." accessibleText="Enter sought phrase." layoutX="2.0" layoutY="14.0" prefHeight="25.0" prefWidth="248.0" promptText="What you attempt to find?" />
-            <Button id="btnFind" accessibleHelp="Save collection as." accessibleText="Save collection as." layoutX="334.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSaveAsAction" prefHeight="25.0" prefWidth="65.0" text="Save As" />
-            <Button id="btnReset" fx:id="btnReset" accessibleHelp="Clear search phrase." accessibleText="Clear search phrase." layoutX="256.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleResetAction" prefHeight="25.0" prefWidth="65.0" text="Reset" />
-            <Button id="btnPrint" fx:id="btnPrint" accessibleHelp="Quick print collection." accessibleText="Quick print collection." layoutX="412.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePrintAction" prefHeight="25.0" prefWidth="65.0" text="Print" />
-            <Button id="btnRemove" fx:id="btnRemove" accessibleHelp="Remove selected book." accessibleText="Remove selected book." layoutX="489.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleRemoveAction" prefHeight="25.0" prefWidth="65.0" text="Remove" />
-            <Button id="btnBack" accessibleHelp="Back to main page." accessibleText="Back to main page." layoutX="566.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackAction" prefHeight="25.0" prefWidth="65.0" text="Back" />
+            <TextField id="txtFind" fx:id="searchDynamic" accessibleHelp="Enter sought phrase." accessibleText="Enter sought phrase." layoutX="2.0" layoutY="14.0" prefHeight="25.0" prefWidth="248.0" promptText="What you attempt to find?">
+               <tooltip>
+                  <Tooltip text="Enter sought phrase." />
+               </tooltip></TextField>
+            <Button id="btnFind" accessibleHelp="Save collection as." accessibleText="Save collection as." layoutX="334.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSaveAsAction" prefHeight="25.0" prefWidth="65.0" text="Save As">
+               <tooltip>
+                  <Tooltip text="Save collection as." />
+               </tooltip></Button>
+            <Button id="btnReset" fx:id="btnReset" accessibleHelp="Clear search phrase." accessibleText="Clear search phrase." layoutX="256.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleResetAction" prefHeight="25.0" prefWidth="65.0" text="Reset">
+               <tooltip>
+                  <Tooltip text="Clear search phrase." />
+               </tooltip></Button>
+            <Button id="btnPrint" fx:id="btnPrint" accessibleHelp="Quick print collection." accessibleText="Quick print collection." layoutX="412.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePrintAction" prefHeight="25.0" prefWidth="65.0" text="Print">
+               <tooltip>
+                  <Tooltip text="Quick print collection." />
+               </tooltip></Button>
+            <Button id="btnRemove" fx:id="btnRemove" accessibleHelp="Remove selected book." accessibleText="Remove selected book." layoutX="489.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleRemoveAction" prefHeight="25.0" prefWidth="65.0" text="Remove">
+               <tooltip>
+                  <Tooltip text="Remove selected book." />
+               </tooltip></Button>
+            <Button id="btnBack" accessibleHelp="Back to main page." accessibleText="Back to main page." layoutX="566.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackAction" prefHeight="25.0" prefWidth="65.0" text="Back">
+               <tooltip>
+                  <Tooltip text="Back to main page." />
+               </tooltip></Button>
       </children>
       </AnchorPane>
   </children>
