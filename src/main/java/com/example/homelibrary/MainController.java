@@ -246,7 +246,7 @@ public class MainController {
         if (txtISBN.getText().length() == 0 || txtISBN.getText() == "") {
             // Opening confirmation window with warning message
             JOptionPane
-                    .showMessageDialog(null, "Enter th ISBN number!");
+                    .showMessageDialog(null, "Enter the ISBN number!");
         }
         // Checking if ISBN input contains non-numeric characters
         else if (!txtISBN.getText().matches("[0-9]+")) {
