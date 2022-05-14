@@ -40,37 +40,37 @@ public class MainController {
      * The area of the main page/pane
      */
     @FXML
-    private AnchorPane mainPane;
+    public AnchorPane mainPane;
 
     /**
      * The add button
      */
     @FXML
-    private Button btnAdd;
+    public Button btnAdd;
 
     /**
      * The find button
      */
     @FXML
-    private Button btnFind;
+    public Button btnFind;
 
     /**
      * The reset button
      */
     @FXML
-    private Button btnReset;
+    public Button btnReset;
 
     /**
      * The save as menu button
      */
     @FXML
-    private MenuItem btnMenuSaveAs;
+    public MenuItem btnMenuSaveAs;
 
     /**
      * The tableview for found book information
      */
     @FXML
-    private TableView<Record> book_info;
+    public TableView<Record> book_info;
 
     /**
      * The author's table column
@@ -112,13 +112,13 @@ public class MainController {
      * Text field of the item counter
      */
     @FXML
-    private TextField txtCount;
+    public TextField txtCount;
 
     /**
      * Text field for ISBN input
      */
     @FXML
-    private TextField txtISBN;
+    public TextField txtISBN;
 
     /**
      * Integer for item counter

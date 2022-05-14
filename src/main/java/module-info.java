@@ -7,6 +7,7 @@ module com.example.homelibrary {
     //requires opencsv;
     requires java.desktop;
     requires com.opencsv;
+    requires junit;
 
 
     opens com.example.homelibrary to javafx.fxml;
