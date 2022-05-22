@@ -1,0 +1,1 @@
+This is the project work for BSc(Hons) Contemporary Software Development. The project is a stand-alone JavaFX (Maven) aplication. The application allows to create and modify a collection of books. The artifact using GoogleBooks API to search for books and CSV as the default database to store the collection. 
