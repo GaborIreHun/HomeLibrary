@@ -380,8 +380,11 @@ public class MainController {
         // Creating target file path for write
         final String CSV_FILE_PATH = "books.csv";
 
+        // Creating temporary ObservableList for validation
+        ObservableList<Record> items = book_info.getItems();
+
         // Checking if there is appropriate data to add
-        if (book[0] == "" || txtISBN == null || txtISBN.getText() == "") {
+        if (book[0] == "" || txtISBN == null || txtISBN.getText() == "" || items.isEmpty()) {
             // Opening confirmation window with warning message
             JOptionPane
                     .showMessageDialog(null, "Nothing to add!");
